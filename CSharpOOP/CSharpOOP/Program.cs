@@ -23,6 +23,11 @@ namespace CSharpOOP
             person.Age = int.Parse(Console.ReadLine());
 
             Console.WriteLine($"Hello, {person.FirstName} {person.LastName}! You are {person.Age} years old!");
+
+            person.Birthday();
+
+            Console.WriteLine($"Hello, {person.FirstName} {person.LastName}! You just had a birthday, and are now {person.Age} years old!");
+
         }
     }
 }
