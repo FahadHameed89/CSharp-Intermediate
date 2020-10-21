@@ -18,7 +18,11 @@ namespace CSharpOOP
             Console.WriteLine("Please enter your last name:");
             person.LastName = Console.ReadLine().Trim();
 
-            Console.WriteLine($"Hello, {person.FirstName} {person.LastName}!");
+            Console.WriteLine("Please enter your age:");
+            int ageNum = person.Age;
+            person.Age = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"Hello, {person.FirstName} {person.LastName}! You are {person.Age} years old!");
         }
     }
 }

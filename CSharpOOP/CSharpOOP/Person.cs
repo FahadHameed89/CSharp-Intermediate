@@ -10,23 +10,37 @@ namespace CSharpOOP
         // Auto-Implemented Property (Automatically generates a default "getter" (Accessor) and "setter" (mutator).
         // AccessModifier DataType PropertyName {get; set;}
         public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        public int UserAge { get; set; }
+
 
         // Private items cannot be seen outside of the class. 
-        private string _lastName;
+        private int _age;
 
         // Fully-Implemented Property (You specify the behaviour for the  "getter" (Accessor) and "setter" (mutator).
-        public string LastName {
+        public int Age {
             get 
             {
                 // For the getter, typically you will want to return the value from the backing variable
                 // You may format it first, but thats not required
-                return _lastName;
+                return _age;
             }
             set
             {
                 // Typically for the setter you want to assign the backing variable to the keyword 'value' which represents what is being assigned to the property.
                 // You may perform validation here as well. 
-                _lastName = value;
+                if (value < 0)
+                {
+                    throw new Exception("The supplied value must be greater than or equal to 0");
+
+                }
+                else 
+                {
+                    _age = value;
+
+                }
+
             }
         }
 
