@@ -6,15 +6,19 @@ namespace CSharpOOP
     {
         static void Main(string[] args)
         {
-            string firstName, lastName;
+            // Instantiate the object using the 'new' keyword - generate an instance of a class / blueprint.
+            Person person = new Person();
+
+            // The new object has all the properties that are specified in the class, but they are tied to that object.
+            // One object's properties cannot see another object's properties without explicitly passing the values. 
 
             Console.WriteLine("Please enter your first name:");
-            firstName = Console.ReadLine().Trim();
+            person.FirstName = Console.ReadLine().Trim();
 
             Console.WriteLine("Please enter your last name:");
-            lastName = Console.ReadLine().Trim();
+            person.LastName = Console.ReadLine().Trim();
 
-            Console.WriteLine($"Hello, {firstName} {lastName}!");
+            Console.WriteLine($"Hello, {person.FirstName} {person.LastName}!");
         }
     }
 }
