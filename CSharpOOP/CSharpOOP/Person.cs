@@ -40,6 +40,30 @@ namespace CSharpOOP
             Age += 1;
         }
 
+        // Constructors - Default -> Takes no parameters and sets default values for the properties.
+        public Person()
+        {
+            FirstName = "John";
+            LastName = "Doe";
+            Age = 20;
+        }
+
+        // Partial constructor takes arguments and sets default values based on those arguments.  
+        public Person(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Age = 20;
+        }
+
+        // Greedy Constructor - Taked parameters for all properties
+        public Person(string firstName, string lastName, int age)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Age = age;
+        }
+
         /*
         // Private items cannot be seen outside of the class. Marking it as private enforces that all data to be stored MUST go through the property.
         private string _lastName;
