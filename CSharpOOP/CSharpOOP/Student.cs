@@ -10,7 +10,7 @@ namespace CSharpOOP
         public string LastName { get; set; }
 
         private int _energyLevel;
-        public int EnergyLevel
+        private int EnergyLevel
         {
             get
             {
@@ -26,7 +26,7 @@ namespace CSharpOOP
             }
         }
         private int _stressLevel;
-        public int StressLevel
+        private int StressLevel
         {
             get
             {
@@ -34,7 +34,7 @@ namespace CSharpOOP
             }
             set
             {
-                if ( value > 0)
+                if ( value > 100)
                 {
                     throw new Exception("Too much stress!!");
                 }
@@ -54,6 +54,11 @@ namespace CSharpOOP
             LastName = lastName;
             EnergyLevel = 100;
             StressLevel = 0;
+        }
+
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName} - Stress: {StressLevel} Energy {EnergyLevel}";
         }
     }
 }

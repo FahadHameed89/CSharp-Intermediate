@@ -11,6 +11,14 @@ namespace CSharpOOP
 
         public List<Student> Class { get; set; }
 
+        public void AssignHomework()
+        {
+            foreach (Student student in Class)
+            {
+                student.DoHomework();
+            }
+        }
+
         public Teacher(string firstName, string lastName)
         {
             FirstName = firstName;
