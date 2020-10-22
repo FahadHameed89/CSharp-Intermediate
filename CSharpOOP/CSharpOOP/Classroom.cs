@@ -6,6 +6,11 @@ namespace CSharpOOP
 {
     class Classroom
     {
-        public int RoomNumber { get; set }
+        public int RoomNumber { get; set; }
+
+        public Classroom(int roomNumber)
+        {
+            RoomNumber = roomNumber;
+        }
     }
 }

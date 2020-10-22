@@ -6,7 +6,7 @@ namespace CSharpOOP
     {
         static void Main(string[] args)
         {
-            Teacher mathTeacher = new Teacher("Bob", "Jones");
+            Teacher mathTeacher = new Teacher("Bob", "Jones", new Classroom(101));
 
             Student joe = new Student("Joe", "Smith");
             Student sally = new Student("Sally", "Howard");
@@ -22,6 +22,11 @@ namespace CSharpOOP
             Console.WriteLine(joe);
             Console.WriteLine(sally);
 
+            joe.Sleep();
+            joe.Sleep();
+            joe.Sleep();
+
+            Console.WriteLine(joe);
 
         }
     }

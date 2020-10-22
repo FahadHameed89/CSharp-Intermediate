@@ -22,6 +22,7 @@ namespace CSharpOOP
                 {
                     throw new Exception("Insufficient energy!");
                 }
+
                 _energyLevel = value;
             }
         }
@@ -38,10 +39,24 @@ namespace CSharpOOP
                 {
                     throw new Exception("Too much stress!!");
                 }
-                _stressLevel = value;
+                // Stress can't go below zero, but don't throw an exception. This is called clamping.
+                if (value < 0)
+                {
+                    _stressLevel = 0;
+                }
+                else
+                {
+                    _stressLevel = value;
+                }
+
             }
         }
 
+        public void Sleep()
+        {
+            EnergyLevel += 25;
+            StressLevel -= 30;
+        }
         public void DoHomework()
         {
             EnergyLevel -= 20;
