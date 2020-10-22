@@ -9,8 +9,38 @@ namespace CSharpOOP
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public int EnergyLevel { get; set; }
-        public int StressLevel { get; set; }
+        private int _energyLevel;
+        public int EnergyLevel
+        {
+            get
+            {
+                return _energyLevel;
+            }
+            set
+            {
+                if ( value < 0)
+                {
+                    throw new Exception("Insufficient energy!");
+                }
+                _energyLevel = value;
+            }
+        }
+        private int _stressLevel;
+        public int StressLevel
+        {
+            get
+            {
+                return _stressLevel;
+            }
+            set
+            {
+                if ( value > 0)
+                {
+                    throw new Exception("Too much stress!!");
+                }
+                _stressLevel = value;
+            }
+        }
 
         public void DoHomework()
         {
