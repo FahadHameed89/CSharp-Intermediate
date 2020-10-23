@@ -6,19 +6,21 @@ namespace CSharpOOP
 {
     class Teacher : Person
     {
-        // When students sleep, energy level goes up by 35, stress goes down by 30.
+        // When teachers sleep, energy level goes up by 25, stress goes down by 20.
 
         public List<Student> Class { get; set; }
 
         public Classroom Room { get; set; }
 
-        public override string FullName 
+        // "Derived" properties are derived from other properties.
+        // They have no backing variables themselves.
+        public override string FullName
         {
-            get 
+            get
             {
-                return FirstName + " " + LastName; 
-            } 
-         }
+                return FirstName + " " + LastName;
+            }
+        }
 
         public void AssignHomework()
         {
@@ -33,20 +35,20 @@ namespace CSharpOOP
             EnergyLevel += 25;
             StressLevel -= 20;
         }
-
         public override void Eat()
         {
             EnergyLevel += 15;
-            StressLevel -= 10;
+            StressLevel -= 5;
         }
-
         public Teacher(string firstName, string lastName, Classroom room)
+            : base(firstName, lastName)
         {
-            FirstName = firstName;
-            LastName = lastName;
-
             Class = new List<Student>();
             Room = room;
+        }
+        public override string WriteInfo()
+        {
+            return "This is a teacher!";
         }
     }
 }

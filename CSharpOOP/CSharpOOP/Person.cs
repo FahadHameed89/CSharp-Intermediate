@@ -4,14 +4,15 @@ using System.Text;
 
 namespace CSharpOOP
 {
-    // An Abstract class CANNOT be instantiated on it's own. They don't make sense on their own.
-    // Typicall used when it doesn't make logical sense to instantiate the base class...?!
+    // An abstract class CANNOT be instantiated.
+    // It's typically used when it doesn't make logical sense to instantiate the base class.
     abstract class Person
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public abstract string FullName { get; set; }
+        public abstract string FullName { get; }
+
         public DateTime DateOfBirth { get; set; }
 
         private int _energyLevel;
@@ -55,6 +56,8 @@ namespace CSharpOOP
                 }
             }
         }
+
+        // What it means on methods, is that while it has no functionality here, all derived classes MUST have functionality.
         abstract public void Sleep();
 
         virtual public void Eat()
@@ -63,5 +66,12 @@ namespace CSharpOOP
             StressLevel -= 5;
         }
 
+        abstract public string WriteInfo();
+
+        public Person(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
     }
 }

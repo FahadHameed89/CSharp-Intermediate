@@ -7,25 +7,32 @@ namespace CSharpOOP
     {
         static void Main(string[] args)
         {
-            Student theStudent = new Student("Test", "McTest");
-            Classroom theRoom = new Classroom(101);
+            List<Person> people = new List<Person>();
 
-            // Static method example.
-            Student.Sleep();
+            people.Add(new Teacher("Bob", "Jones", new Classroom(101)));
+            people.Add(new Teacher("Sally", "Smith", new Classroom(102)));
+            people.Add(new Teacher("Joe", "Johnson", new Classroom(103)));
 
-            Teacher theTeacher = new Teacher("Teacher", "McTest", theRoom);
+            people.Add(new Student("Tom", "Winston"));
 
-            //List<Student> someStudents = new List<Student>();
-            theTeacher.Class[0] = theStudent;
+            foreach (Person person in people)
+            {
+                Console.WriteLine(person.WriteInfo());
 
-            //someStudents[0].DoHomework();
-            theTeacher.Class[0].DoHomework();
+                // If the polymorphic reference is a Student...
+                if (person.GetType() == typeof(Student))
+                {
+                    // Cast the person to a Student (convert it), and call the DoHomework() method.
+                    // Trying to cast one object to another type of object other than a base type will likely throw an exception.
+                    ((Student)person).DoHomework();
+                }
+            }
 
 
-            //theRoom.RoomNumber
-            //theTeacher.Room.RoomNumber
+            Person aPerson = new Student("Test", "McTest")
+            { MiddleName = "Joe" };
 
-
+            Console.WriteLine(aPerson.FullName);
 
         }
 

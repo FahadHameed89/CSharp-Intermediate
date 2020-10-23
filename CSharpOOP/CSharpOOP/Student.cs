@@ -33,14 +33,13 @@ namespace CSharpOOP
 
         public override void Eat()
         {
-            EnergyLevel += 15;
+            EnergyLevel += 20;
             StressLevel -= 10;
         }
 
         public Student(string firstName, string lastName)
+            : base(firstName, lastName)
         {
-            FirstName = firstName;
-            LastName = lastName;
             EnergyLevel = 100;
             StressLevel = 0;
         }
@@ -48,6 +47,11 @@ namespace CSharpOOP
         public override string ToString()
         {
             return $"{FirstName} {LastName} - Stress:{StressLevel} Energy:{EnergyLevel}";
+        }
+
+        public override string WriteInfo()
+        {
+            return "This is a student!";
         }
     }
 }
