@@ -9,6 +9,16 @@ namespace CSharpOOP
     {
         // When students sleep, energy level goes up by 35, stress goes down by 30.
 
+        public string MiddleName { get; set; }
+
+        public override string FullName
+        {
+            get
+            {
+                return FirstName + " " + MiddleName + " " + LastName;
+            }
+        }
+
         public void DoHomework()
         {
             EnergyLevel -= 20;
