@@ -4,10 +4,8 @@ using System.Text;
 
 namespace CSharpOOP
 {
-    class Student
+    class Student: Person
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
 
         private int _energyLevel;
         private int EnergyLevel
