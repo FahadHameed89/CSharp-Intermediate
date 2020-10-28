@@ -4,15 +4,27 @@ using System.Linq;
 
 namespace CSharpOOP
 {
-    class Person
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
-    }
+
     class Program
     {
         static void Main(string[] args)
+        {
+            // In-class practice.
+            List<int> theList = new List<int>() { 2, 5, 12, 7, 32, 95, 42, 65, 9, 42, 7, 42 };
+
+           Console.WriteLine($"The average of all the items which are less than 20 is: {theList.Where(x => x < 20).Average()}");
+           Console.WriteLine($"The largest item that is less than 50 is: {theList.Where(x => x < 50).Max()}");
+           Console.WriteLine($"The third distinct item, in numerical order is: {theList.Distinct().OrderBy(x=>x).ToArray()[2]}");
+           Console.WriteLine($"The most number of duplicated items is: {theList.Select(x => theList.Where(y => y == x).Count()).Max()}");
+           Console.WriteLine($"The sum of all odd numbers is: {theList.Where(x => x % 2 == 1).Sum()}");
+           Console.WriteLine($"The lowest number that is divisible by 4 is: {theList.Where(x => x % 4 == 0).Min()}");
+           Console.WriteLine($"The average remainder when the distinct items are divided by 5 is: {theList.Distinct().Select(x => x % 5).Average()}");
+        }
+
+        }
+    }
+/*
+         static void LINQ()
         {
             // ----------
             // LINQ
@@ -42,6 +54,9 @@ namespace CSharpOOP
             Console.WriteLine(myInts.Min());
             // Keep in mind when stringing LINQ methods together, the Aggregate should be after any filtering and selection, as it will collapse the list into a single value.
 
+            // Distinct - Removes all duplicates.
+            myInts.Distinct();
+
             // Converting from a list of one item to a single item.
             myInts.Where(x => x == 12).Single();
             // 12
@@ -61,7 +76,7 @@ namespace CSharpOOP
 
             // OrderBy is sort of like Sort, except it works with DbSets (to be discussed later).
             myInts.OrderBy(x => x);
-
+/*
             List<Person> myObjectList = new List<Person>()
             {
                 new Person()
@@ -83,20 +98,16 @@ namespace CSharpOOP
                     DateOfBirth = new DateTime(1992, 3, 3)
                 }
             };
+*/
+//   myObjectList.Where(x => x.LastName[0] == 'S');
+// First character of last name is S.
+// Joe, Sally
 
-            myObjectList.Where(x => x.LastName[0] == 'S');
-            // First character of last name is S.
-            // Joe, Sally
+//  myObjectList.Select(x => x.DateOfBirth.Year);
+// 1990, 1988, 1992
 
-            myObjectList.Select(x => x.DateOfBirth.Year);
-            // 1990, 1988, 1992
+//  myObjectList.OrderBy(x => x.FirstName);
+// Bob, Joe, Sally
 
-            myObjectList.OrderBy(x => x.FirstName);
-            // Bob, Joe, Sally
-
-            myObjectList.Select(x => x.DateOfBirth.Year).Average();
-            // 1990
-
-        }
-    }
-}
+//   myObjectList.Select(x => x.DateOfBirth.Year).Average();
+// 1990
