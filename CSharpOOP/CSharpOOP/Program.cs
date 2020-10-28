@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CSharpOOP
 {
@@ -7,117 +8,57 @@ namespace CSharpOOP
     {
         static void Main(string[] args)
         {
+            // ----------
+            // LINQ
+            // ----------
             // Create an empty list
-            List<string> myStringList = new List<string>();
+            List<string> myList = new List<string>() { "Hello", "World", "Here", "Are", "Some", "Strings", "Hello", "Hello", "World", "True", "False"};
 
-            // Initialize a list to allow you to pre-populate lists when they are initialized
-            List<string> myInitializedList = new List<string>() { "Hello", "World", "Here", "Are", "Some", "Strings" };
+            // Filtering (WHERE)
+            myList.Where(x => x.Length > 4);
+            // "Hello", "World", "Strings", "Hello", "Hello", "World", "False"
 
-            // Add things to a list
-            myStringList.Add("A String");
+            // Get Associated Values (SELECT)
+            myList.Select(x => x.Length);
+            // 5, 5, 4, 3, 2, 6, 5, 5, 5, 4, 5
 
-            // Remove things from a list by value or reference
-            myInitializedList.Remove("Some");
+            // Combine the Two
+            myList.Where(x => x.Length > 4).Select(x => x.Length);
+            // "Hello", "World", "Strings", "Hello", "Hello", "World", "False"
+            // 5, 5, 6, 5, 5, 5, 5
 
-            // Remove things from a list by index/
-            myInitializedList.RemoveAt(3);
-            // "Hello", "World", "Are", "Some", "Strings"
+            // Aggregates
+            List<int> myInts = new List<int>() { 6, 3, 10, 42, 5, 12, 37, 95, 1, 50, 100 };
 
-            // Number of things in a list.
-            Console.WriteLine(myInitializedList.Count);
-            // 5
+            // Aggregates - Sum, Average, Max, Min
+            Console.WriteLine(myInts.Sum());
+            Console.WriteLine(myInts.Average());
+            Console.WriteLine(myInts.Max());
+            Console.WriteLine(myInts.Min());
 
-            // Add multiple things to a list..
-            myInitializedList.AddRange( new string[] {"Test", "Test", "Test", "Yes" } );
-            // { "Hello", "World", "Here", "Are", "Some", "Strings", "Test", "Test", "Test", "Yes" }
+            // Keep in mind when stringing LINQ methods together, the Aggregate should be after any filtering and selection, as it will collapse the list into a single value. 
 
-            // Insert an item at a specific index
-            myInitializedList.Insert(5, "True");
-            // { "Hello", "World", "Here", "Are", "Some", "True", "Strings", "Test", "Test", "Test", "Yes" }
+            // Converting from a list of one item to a single item (Happens when you have a list of one item after filtering and selecting stuff)
+            myInts.Where(x => x == 12);
+            // Returns [12] (list format)
+            myInts.Where(x => x == 12).Single();
+            // Returns 12 (int format)
+            // NOTE - Single will throw an exception if there is nothing in the list OR if there are multiple items in the list.
+            // If you don't want that exception thrown, you can use SingleOrDefault(), which will return the default for that type if it meets either of the previous failure states.
+            myInts.Where(x => x == 11).SingleOrDefault();
+            // 0
 
-            // Reverse the Order of a List
-            myInitializedList.Reverse();
-            // "Yes", "Test", "Test", "Test", "Strings", "True", "Some", "Are", "Here", "World", "Hello"
+            // IF you don't want the multiple items failure state, you can use First, FirstOrDefault, Last, or LastOrDefault, which will still fail if there are not items, but will not fail if there are multiple items. 
 
+            myInts.Where(x => x > 50).First();
+            // 95
+            myInts.Where(x => x == 12).First();
+            // 12
+            myInts.Where(x => x == 11).FirstOrDefault();
+            // 0
 
-
-            // Remove all copies of the same thing from a list.
-            myInitializedList.RemoveAll(x => x == "Test");
-            // "Yes", "Strings", "True", "Some", "Are", "Here", "World", "Hello"
-
-            // Determine whether something is present in a list
-            myInitializedList.Contains("Here");
-            // True
-            myInitializedList.Contains("Random");
-            // False
-
-            // Sort a list alphabetically
-            myInitializedList.Sort();
-            // "Are", "Hello, "Strings"
-
-            // Remove everything from a list.
-            myInitializedList.Clear();
-
-            // ----------------
-            // Stacks & Queues
-            // ----------------
-
-            // A stack of papers or a queue of people
-            // Stack: Last in, First Out
-            Stack<int> myIntStack = new Stack<int>();
-
-
-            // Push - Add something to the stack
-            myIntStack.Push(12);
-            myIntStack.Push(42);
-            myIntStack.Push(3);
-            // 12, 42, 3
-
-            // Pop - "Grab the Top Thing"
-            Console.WriteLine(myIntStack.Pop());
-            // 3
-            // Note that Pop() REMOVEs the item from the Stack
-            // If you just want to get it without removing it, use Peek
-            Console.WriteLine(myIntStack.Peek());
-            // 42
-
-            // Queues: First In, First Out
-            Queue<int> myIntQueue = new Queue<int>();
-
-            // Enqueue = Add
-            myIntQueue.Enqueue(8);
-            myIntQueue.Enqueue(42);
-            myIntQueue.Enqueue(7);
-
-            // Dequeue = Pop() but from the "front" instead of the "top".
-            Console.WriteLine(myIntQueue.Dequeue());
-            // 8
-            
-            // Peek - Works the same way in Queues as they do in Stacks, view the next thing without removing it. 
-            Console.WriteLine(myIntQueue.Peek());
-            // 42
-
-            // ----------------
-            // Dictionaries
-            // ----------------
-
-            // Normal lists are indexed by ints (starting at 0, then 1)
-            // Dictionaries can be indexed by anything. Takes a KEY and a VALUETYPE
-            Dictionary<char, int> characterCounts = new Dictionary<char, int>();
-
-            string example = "The quick brown fox jumps over the lazy dog";
-
-            foreach (char character in example)
-            {
-                if (!characterCounts.ContainsKey(character))
-                {
-                    characterCounts.Add(character, 0);
-                }
-                characterCounts[character] += 1;
-            }
-
-            Console.WriteLine($"There are {characterCounts['o']} O's in the string");
-            Console.WriteLine($"There are {characterCounts['q']} 's in the string");
+            // Order By is sort of like a Sort method except it works with DbSets (to be disucussed later)
+            myInts.OrderBy(x => x); 
 
         }
     }
