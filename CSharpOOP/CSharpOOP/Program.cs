@@ -66,7 +66,6 @@ namespace CSharpOOP
             // Stack: Last in, First Out
             Stack<int> myIntStack = new Stack<int>();
 
-            myIntStack.Pop();
 
             // Push - Add something to the stack
             myIntStack.Push(12);
@@ -98,6 +97,27 @@ namespace CSharpOOP
             Console.WriteLine(myIntQueue.Peek());
             // 42
 
+            // ----------------
+            // Dictionaries
+            // ----------------
+
+            // Normal lists are indexed by ints (starting at 0, then 1)
+            // Dictionaries can be indexed by anything. Takes a KEY and a VALUETYPE
+            Dictionary<char, int> characterCounts = new Dictionary<char, int>();
+
+            string example = "The quick brown fox jumps over the lazy dog";
+
+            foreach (char character in example)
+            {
+                if (!characterCounts.ContainsKey(character))
+                {
+                    characterCounts.Add(character, 0);
+                }
+                characterCounts[character] += 1;
+            }
+
+            Console.WriteLine($"There are {characterCounts['o']} O's in the string");
+            Console.WriteLine($"There are {characterCounts['q']} 's in the string");
 
         }
     }
