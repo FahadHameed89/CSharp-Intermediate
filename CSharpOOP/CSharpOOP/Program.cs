@@ -58,6 +58,45 @@ namespace CSharpOOP
             // Remove everything from a list.
             myInitializedList.Clear();
 
+            // ----------------
+            // Stacks & Queues
+            // ----------------
+
+            // A stack of papers or a queue of people
+            // Stack: Last in, First Out
+            Stack<int> myIntStack = new Stack<int>();
+
+            myIntStack.Pop();
+
+            // Push - Add something to the stack
+            myIntStack.Push(12);
+            myIntStack.Push(42);
+            myIntStack.Push(3);
+            // 12, 42, 3
+
+            // Pop - "Grab the Top Thing"
+            Console.WriteLine(myIntStack.Pop());
+            // 3
+            // Note that Pop() REMOVEs the item from the Stack
+            // If you just want to get it without removing it, use Peek
+            Console.WriteLine(myIntStack.Peek());
+            // 42
+
+            // Queues: First In, First Out
+            Queue<int> myIntQueue = new Queue<int>();
+
+            // Enqueue = Add
+            myIntQueue.Enqueue(8);
+            myIntQueue.Enqueue(42);
+            myIntQueue.Enqueue(7);
+
+            // Dequeue = Pop() but from the "front" instead of the "top".
+            Console.WriteLine(myIntQueue.Dequeue());
+            // 8
+            
+            // Peek - Works the same way in Queues as they do in Stacks, view the next thing without removing it. 
+            Console.WriteLine(myIntQueue.Peek());
+            // 42
 
 
         }
