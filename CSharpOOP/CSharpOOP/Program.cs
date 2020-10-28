@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CSharpOOP
 {
@@ -6,37 +7,58 @@ namespace CSharpOOP
     {
         static void Main(string[] args)
         {
-            // Instantiate the object using the 'new' keyword - generate an instance of a class / blueprint.
-            Person person = new Person();
+            // Create an empty list
+            List<string> myStringList = new List<string>();
 
-            // The new object has all the properties that are specified in the class, but they are tied to that object.
-            // One object's properties cannot see another object's properties without explicitly passing the values. 
+            // Initialize a list to allow you to pre-populate lists when they are initialized
+            List<string> myInitializedList = new List<string>() { "Hello", "World", "Here", "Are", "Some", "Strings" };
 
-            // Default Constructor
-            Person defaultPerson = new Person();
+            // Add things to a list
+            myStringList.Add("A String");
 
-            // Partial Constructor
-            Person partialPerson = new Person("Test", "TestLname");
+            // Remove things from a list by value or reference
+            myInitializedList.Remove("Some");
 
-            // Greedy Constructor
-            Person greedyPerson = new Person("Greed", "McCreed", 50);
+            // Remove things from a list by index/
+            myInitializedList.RemoveAt(3);
+            // "Hello", "World", "Are", "Some", "Strings"
+
+            // Number of things in a list.
+            Console.WriteLine(myInitializedList.Count);
+            // 5
+
+            // Add multiple things to a list..
+            myInitializedList.AddRange( new string[] {"Test", "Test", "Test", "Yes" } );
+            // { "Hello", "World", "Here", "Are", "Some", "Strings", "Test", "Test", "Test", "Yes" }
+
+            // Insert an item at a specific index
+            myInitializedList.Insert(5, "True");
+            // { "Hello", "World", "Here", "Are", "Some", "True", "Strings", "Test", "Test", "Test", "Yes" }
+
+            // Reverse the Order of a List
+            myInitializedList.Reverse();
+            // "Yes", "Test", "Test", "Test", "Strings", "True", "Some", "Are", "Here", "World", "Hello"
 
 
-            Console.WriteLine("Please enter your first name:");
-            person.FirstName = Console.ReadLine().Trim();
 
-            Console.WriteLine("Please enter your last name:");
-            person.LastName = Console.ReadLine().Trim();
+            // Remove all copies of the same thing from a list.
+            myInitializedList.RemoveAll(x => x == "Test");
+            // "Yes", "Strings", "True", "Some", "Are", "Here", "World", "Hello"
 
-            Console.WriteLine("Please enter your age:");
-            int ageNum = person.Age;
-            person.Age = int.Parse(Console.ReadLine());
+            // Determine whether something is present in a list
+            myInitializedList.Contains("Here");
+            // True
+            myInitializedList.Contains("Random");
+            // False
 
-            Console.WriteLine($"Hello, {person.FirstName} {person.LastName}! You are {person.Age} years old!");
+            // Sort a list alphabetically
+            myInitializedList.Sort();
+            // "Are", "Hello, "Strings"
 
-            person.Birthday();
+            // Remove everything from a list.
+            myInitializedList.Clear();
 
-            Console.WriteLine($"Hello, {person.FirstName} {person.LastName}! You just had a birthday, and are now {person.Age} years old!");
+
 
         }
     }
