@@ -15,6 +15,7 @@ namespace CSharpOOP.Models
         {
         }
 
+        public virtual DbSet<Manufacturer> Manufacturer { get; set; }
         public virtual DbSet<Vehicle> Vehicle { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,21 +29,35 @@ namespace CSharpOOP.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Manufacturer>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+            });
+
             modelBuilder.Entity<Vehicle>(entity =>
             {
+                entity.HasIndex(e => e.ManufacturerId)
+                    .HasName("FK_Vehicle_Manufacturer");
+
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Colour)
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 
-                entity.Property(e => e.Manufacturer)
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_general_ci");
-
                 entity.Property(e => e.Model)
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
+
+                entity.HasOne(d => d.Manufacturer)
+                    .WithMany(p => p.Vehicle)
+                    .HasForeignKey(d => d.ManufacturerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Vehicle_Manufacturer");
             });
 
             OnModelCreatingPartial(modelBuilder);
