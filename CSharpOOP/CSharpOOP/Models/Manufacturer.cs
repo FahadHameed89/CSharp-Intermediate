@@ -5,9 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CSharpOOP.Models
 {
+    // Defines the name of the table this model references.
     [Table("manufacturer")]
     public partial class Manufacturer
     {
+        // Constructor for initializing the virtual property
         public Manufacturer()
         {
             Vehicle = new HashSet<Vehicle>();
