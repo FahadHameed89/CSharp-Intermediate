@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CSharpOOP.Models
-{
+{ 
     [Table("vehicle")]
     public partial class Vehicle
     {
@@ -22,11 +22,11 @@ namespace CSharpOOP.Models
         [Column(TypeName = "varchar(25)")]
         public string Colour { get; set; }
 
-        // Specifies the name of the foreign key column itself (the one that has the value connected to the other table).
+        // Specifies the foreign key column itself (the one that has the value connected to the other table).
         [ForeignKey(nameof(ManufacturerId))]
-        // Links to the virtual property in the parent. 
-        [InverseProperty("Vehicle")]
-        // Represents the record for the parent. 
+        // Links to the virtual property in the parent.
+        [InverseProperty("Vehicles")]
+        // Represents the (singular) record for the parent.
         public virtual Manufacturer Manufacturer { get; set; }
     }
 }

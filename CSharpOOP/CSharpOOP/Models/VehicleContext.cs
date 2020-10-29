@@ -68,7 +68,7 @@ namespace CSharpOOP.Models
                 // This entitity has one manufacturer.
                 entity.HasOne(d => d.Manufacturer)
                 // That entity (manufacturer) has many of this record (vehicles).
-                    .WithMany(p => p.Vehicle)
+                    .WithMany(p => p.Vehicles)
                     // This entity has a foreign key property called ManufacturerId.
                     .HasForeignKey(d => d.ManufacturerId)
                     // When the parent is deleted, this controls behaviour. 
