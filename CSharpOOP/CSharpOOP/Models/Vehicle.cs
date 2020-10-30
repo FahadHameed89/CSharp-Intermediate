@@ -7,10 +7,10 @@ using System.Text;
 namespace CSharpOOP.Models
 {
     [Table("vehicle")]
-    class Vehicle
+    public class Vehicle
     {
         [Key]
-        [Column("ID", TypeName = "int(10)")]
+        [Column(TypeName = "int(10)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
@@ -21,9 +21,10 @@ namespace CSharpOOP.Models
         public string Model { get; set; }
 
         [Column(TypeName = "int(10)")]
-        public string ModelYear { get; set; }
+        public int ModelYear { get; set; }
 
         [Column(TypeName = "varchar(30)")]
         public string Colour { get; set; }
+
     }
 }
