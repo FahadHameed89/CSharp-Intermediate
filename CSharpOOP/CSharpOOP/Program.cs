@@ -22,7 +22,13 @@ namespace CSharpOOP.Models
              *   - Implement OnConfiguring wiht Connection String
              *   Implemenet OnModelCreating with string collation and foreign keys
              *   Step 5 - Create a migration using 'dotnet ef migrations add initialMigration' in package manager console (in the project folder).
+             * 
+             *  Foreign Keys:
+             *  - Create the property to serve as the key itself (typically an int)
+             *  - Create the navigation property in the child model (singular) with [ForeignKey)]
+             *  - Create the navigation property in the parent model (plural).
              * **/
+
 
         }
     }
