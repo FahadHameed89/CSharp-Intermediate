@@ -9,7 +9,7 @@ namespace CSharpOOP
     {
         static void Main(string[] args)
         {
-            // In-class practice 2.
+            // More Entity Framework. 
 
 
         }
