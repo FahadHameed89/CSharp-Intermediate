@@ -10,20 +10,20 @@ namespace CSharpOOP.Models
     public class Vehicle
     {
         [Key]
-        [Column(TypeName = "int(10)")]
+        [Column("ID", TypeName = "int(10)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Column(TypeName = "varchar(30)")]
+        [Column("Manufacturer", TypeName = "varchar(30)")]
         public string Manufacturer { get; set; }
 
-        [Column(TypeName = "varchar(30)")]
+        [Column("Model", TypeName = "varchar(30)")]
         public string Model { get; set; }
 
-        [Column(TypeName = "int(10)")]
+        [Column("ModelYear", TypeName = "int(10)")]
         public int ModelYear { get; set; }
 
-        [Column(TypeName = "varchar(30)")]
+        [Column("Colour", TypeName = "varchar(30)")]
         public string Colour { get; set; }
 
     }

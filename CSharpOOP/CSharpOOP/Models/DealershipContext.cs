@@ -16,9 +16,10 @@ namespace CSharpOOP.Models
             {
                 string connection = 
                     "server=localhost;" +
-                    "ports=3306;" +
+                    "port=3306;" +
                     "user=root;" +
                     "database=codefirst_4point2;";
+
                 string version = "10.4.14-MariaDB";
                 optionsBuilder.UseMySql(connection, x => x.ServerVersion(version));
             }
