@@ -2,14 +2,16 @@
 using CSharpOOP.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CSharpOOP.Migrations
 {
     [DbContext(typeof(DealershipContext))]
-    partial class DealershipContextModelSnapshot : ModelSnapshot
+    [Migration("20201030172512_ManufacturerTable")]
+    partial class ManufacturerTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,30 +25,11 @@ namespace CSharpOOP.Migrations
                         .HasColumnType("int(10)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(30)")
-                        .HasAnnotation("MySql:CharSet", "utf8mb4")
-                        .HasAnnotation("MySql:Collation", "utf8mb4_general_ci");
+                        .HasColumnType("varchar(30)");
 
                     b.HasKey("ID");
 
                     b.ToTable("manufacturer");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = -1,
-                            Name = "Ford"
-                        },
-                        new
-                        {
-                            ID = -2,
-                            Name = "Chevrolet"
-                        },
-                        new
-                        {
-                            ID = -3,
-                            Name = "Dodge"
-                        });
                 });
 
             modelBuilder.Entity("CSharpOOP.Models.Vehicle", b =>
@@ -77,48 +60,6 @@ namespace CSharpOOP.Migrations
                         .HasName("FK_Vehicle_Manufacturer");
 
                     b.ToTable("vehicle");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = -1,
-                            Colour = "Cyan",
-                            ManufacturerID = -1,
-                            Model = "Furiosa",
-                            ModelYear = 1992
-                        },
-                        new
-                        {
-                            ID = -2,
-                            Colour = "Gold",
-                            ManufacturerID = -2,
-                            Model = "Cyro",
-                            ModelYear = 1993
-                        },
-                        new
-                        {
-                            ID = -3,
-                            Colour = "Silver",
-                            ManufacturerID = -3,
-                            Model = "Capitus",
-                            ModelYear = 2020
-                        },
-                        new
-                        {
-                            ID = -4,
-                            Colour = "Red",
-                            ManufacturerID = -3,
-                            Model = "Uniborn",
-                            ModelYear = 2021
-                        },
-                        new
-                        {
-                            ID = -5,
-                            Colour = "Black",
-                            ManufacturerID = -3,
-                            Model = "Virgil",
-                            ModelYear = 2023
-                        });
                 });
 
             modelBuilder.Entity("CSharpOOP.Models.Vehicle", b =>
